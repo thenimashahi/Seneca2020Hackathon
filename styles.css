@@ -1,6 +1,9 @@
 #mapid { 
-    height: 800px;
+    height: 400px;
     position: relative;
+}
+#graph{
+    width: 400px;
 }
 .info {
     padding: 6px 8px;

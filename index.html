@@ -12,15 +12,19 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
     <link rel="stylesheet" href="./styles.css">
-    <!-- d3 -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div id="mapid"></div>
-    <div id="graph"></div>
+    <div id="graph">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
     <script src="./canadaCovidData.js"></script>
     <script src="./canadaHealthRegions.js"></script>
     <script src="./index.js"></script>
+    <script src="./map.js"></script>
+    <script src="./graph.js"></script>
 </body>
 </html>
