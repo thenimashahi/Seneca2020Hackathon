@@ -40,6 +40,7 @@ var myChart = new Chart(ctx, {
       borderColor: chartColors.red,
       backgroundColor: chartColors.red,
       borderWidth: 5,
+      pointRadius: 0,
       fill: false,
     }]
   },
