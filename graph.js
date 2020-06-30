@@ -57,16 +57,15 @@ var myChart = new Chart(ctx, {
       xAxes: [{
         gridLines: {
           offsetGridLines: false,
-        }
-      }, {
-        id: 'x-axis-2',
-        type: 'linear',
-        position: 'bottom',
-        display: false,
+        },
         ticks: {
-          min: 0,
-          max: 168,
-          stepSize: 24
+          maxTicksLimit: 6,
+          minRotation: 90,
+            // Include a dollar sign in the ticks
+            callback: function(value) {
+              let options = { month: 'long', day: 'numeric', year: 'numeric' };
+              return value.toLocaleString('en-US', options);
+            }
         }
       }],
     }
