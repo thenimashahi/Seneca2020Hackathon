@@ -1,4 +1,5 @@
 
+//Leafleft map init
 var mymap = L.map('mapid').setView([56.1304, -106.3468], 4);
 
 const access_token = 'pk.eyJ1Ijoia3NkaGlsbG9uMTEiLCJhIjoiY2tjMHJiNzNhMTN1dzJycWVxeXc1ejB6MyJ9.uXWRENzoNvoblYvIPUKV1g';
@@ -12,28 +13,66 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: access_token
 }).addTo(mymap);
 
-//Markers:
-// window.citiesData.forEach((city) => {
-//     var marker = L.marker([city.lat, city.lng]).addTo(mymap)
-//                     .bindPopup();
+//Adding health region boundaries:
+//L.geoJson(window.healthRegions).addTo(mymap);
 
-// })
+// let data = window.canadaCovidData;
 
-//Health region boundaries:
-L.geoJson(window.healthRegions).addTo(mymap);
+// console.log(window.healthRegions)
 
-let data = window.canadaCovidData;
+// let healthRegionNames = Array.from(new Set(data.map(entry => entry.engname)));
 
-console.log(window.healthRegions)
+// console.log('Covid Data: ', healthRegionNames);
 
-let healthRegionNames = Array.from(new Set(data.map(entry => entry.engname)));
+// let healthRegionNamesMap = Array.from(new Set(window.healthRegions.features.map(feature => feature.properties.ENG_LABEL)));
 
-console.log('Covid Data: ', healthRegionNames);
+// console.log('GeoJSON data: ', healthRegionNamesMap)
 
-let healthRegionNamesMap = Array.from(new Set(window.healthRegions.features.map(feature => feature.properties.ENG_LABEL)));
+// let differentOnes = healthRegionNames.filter(x => !healthRegionNamesMap.includes(x));
 
-console.log('GeoJSON data: ', healthRegionNamesMap)
+// console.log(differentOnes)
 
-let differentOnes = healthRegionNames.filter(x => !healthRegionNamesMap.includes(x));
+//Combining health region boundaries and covid data:
 
-console.log(differentOnes)
+window.healthRegions.features.forEach((feature) => {
+    let covidDataForFeature;
+
+    covidDataForFeature = window.canadaCovidData.filter((entry) => feature.properties.ENG_LABEL == entry.engname && feature.properties.province == entry.province);
+    
+    //Creating a new field and storing covid data for the respective feature:
+    feature.properties.data = covidDataForFeature.map((data) => {
+        return{
+            casecount: data.casecount,
+            retrieved_at: Date.parse(data.retrieved_at),
+            totalpop2019: data.totalpop2019
+        }
+    })
+});
+
+console.log(window.healthRegions.features.filter((feature) => feature.properties.ENG_LABEL == 'Calgary Zone'))
+//Styling the map:
+function getColor(d) {
+    return d > 1000 ? '#800026' :
+           d > 500  ? '#BD0026' :
+           d > 200  ? '#E31A1C' :
+           d > 100  ? '#FC4E2A' :
+           d > 50   ? '#FD8D3C' :
+           d > 20   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+function style(feature) {
+    //Find the most recent data entry for the feature:
+    let recentData;
+
+    return {
+        fillColor: getColor(feature.properties.data[0].casecount),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+L.geoJson(window.healthRegions, {style: style}).addTo(mymap);
