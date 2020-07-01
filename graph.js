@@ -12,10 +12,10 @@ const chartColors = {
   grey: 'rgb(231,233,237)'
 };
 
-//Create a chart using the passed data
-function createChart(healthRegion){
+//Populates a chart using the passed data
+function createChart(healthRegion, id){
     
-    var ctx = document.getElementById('myChart');
+    var ctx = document.getElementById(id);
 
     let xLabels = healthRegion.properties.data.map((dataEntry) => {
         return new Date(dataEntry.retrieved_at);
@@ -70,4 +70,14 @@ function createChart(healthRegion){
     });
 }
 
+//Creates a small 50x50 canvas and returns it with the specified id
+function createCanvas(id){
+    var ctx = document.createElement('canvas');
 
+    ctx.setAttribute('width', '500');
+    ctx.setAttribute('height', '500');
+
+    ctx.setAttribute('id', id);
+    
+    return ctx;
+}

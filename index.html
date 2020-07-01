@@ -23,18 +23,17 @@
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
     <div id="formDiv">
-        <form>
-            <label for="address">Address: </label>
-            <input id="address" type="text">
-            <button>
+        <form name="addressForm" id="addressForm">
+            <input id="postalCode" for="postalCode" type="text" placeholder="Postal Code" pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$">
+            <button type="submit" id="goButton">Go</button>
         </form>
     </div>
     <script src="./config.js"></script>
     <script src="./canadaCovidData.js"></script>
     <script src="./canadaHealthRegions.js"></script>
+    <script src="./graph.js"></script>
     <script src="./address.js"></script>
     <script src="./index.js"></script>
     <script src="./map.js"></script>
-    <script src="./graph.js"></script>
 </body>
 </html>

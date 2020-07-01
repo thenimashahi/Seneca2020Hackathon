@@ -58,7 +58,9 @@ function highlightFeature(e) {
     info.update(layer.feature.properties);
 
     //Call a function when the user hovers over the region to show the chart:
-    createChart(layer.feature)
+    createChart(layer.feature, 'myChart')
+
+    console.log('layer.feature', layer.feature);
 }
 //Resets style of the boundary when mouse is no longer hovering over it:
 function resetHighlight(e) {

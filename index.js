@@ -13,3 +13,19 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: access_token
 }).addTo(mymap);
 
+//Getting form data:
+var form = document.querySelector('#addressForm');
+var button = document.querySelector('#goButton');
+
+form.onsubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+    let postalCode = document.querySelector('#postalCode').value;
+
+    document.querySelector('#postalCode').value = '';
+
+    parseAddress(postalCode)
+        .then(() => { 
+            return false;
+        })
+}
