@@ -13,6 +13,10 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: access_token
 }).addTo(mymap);
 
+//Provincial graph:
+createProvincialGraph(createProvincialData(window.canadaCovidData), 'provChart');
+
+
 //Getting form data:
 var form = document.querySelector('#addressForm');
 var button = document.querySelector('#goButton');

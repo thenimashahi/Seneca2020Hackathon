@@ -57,8 +57,7 @@ async function parseAddress(queryString){
                 //Finding which health region in province the coordinate lies in, to check if mask should be worn:
                 provinceHealthRegionsForLocation.forEach(region => {
                     if(inside([resultingLocation.geometry.lng, resultingLocation.geometry.lat], region.geometry.coordinates[0][0])){
-                        console.log(shouldWearMask(region.properties.data[0].casecount));
-    
+                            
                         let displayStr = shouldWearMask(region.properties.data[0].casecount) ? 'Must wear a mask!' : 'Should wear a mask';
 
                         let popupCanvas = createCanvas('popupCanvas');                
