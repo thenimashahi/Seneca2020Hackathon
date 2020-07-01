@@ -42,6 +42,49 @@ html {
 #goButton{
     font-size: 16px;
 }
+#main-body{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+}
+#wrapper{
+    display: flex;
+    flex-direction: column;
+}
+#graph{
+    flex:1;
+}
+#provGraph{    
+    width: 1200px;   
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-bottom: 30px;
+}
+
+#map-id { 
+    height: 100%;
+}
+
+#mapid { 
+    height: 800px;
+    position: relative;
+}
+#provChart{
+    width: 1200px;   
+}
+#heading1{
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px rgb(109, 109, 109);
+	   -moz-box-shadow: 0 8px 6px -6px rgb(109, 109, 109);
+	        box-shadow: 0 8px 6px -6px rgb(109, 109, 109);
+}
 .map-container {
     height: 100%;
     /* Fallback for vmin */
@@ -52,26 +95,10 @@ html {
 .map-frame {
     height: 100%;
     width: 100%;
-  /*   We use outline over border as has issues in some cases */
     outline: 1px solid black;
 }
 .custom .leaflet-popup-content-wrapper{
     font-size: 18px;
-}
-#map-id { 
-    height: 100%;
-}
-
-#mapid { 
-    height: 800px;
-    position: relative;
-}
-#graph{
-    width: 800px;
-}
-
-#provGraph{
-    width: 800px;
 }
 .info {
     padding: 6px 8px;
@@ -96,3 +123,19 @@ html {
     margin-right: 8px;
     opacity: 0.7;
 }
+
+
+@supports (display: flex) {
+    .map-container {
+      height: 0;
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 auto;
+              flex: 1 0 auto;
+    }
+  
+    .map-frame {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 auto;
+              flex: 1 0 auto;
+    }
+  }

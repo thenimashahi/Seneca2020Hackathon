@@ -101,11 +101,18 @@ function createProvincialGraph(provincialData, id){
             responsive: true,
             title: {
             display: true,
-            text: 'Daily cases over Time'
+            text: 'Daily cases over Time',
+            fontSize: 20
             },
             tooltips: {
             mode: 'nearest',
             intersect: true,
+            },
+            legend: {
+                display: true,
+                labels: {
+                    fontSize: 20
+                }
             },
             scales: {
             xAxes: [{
@@ -113,8 +120,8 @@ function createProvincialGraph(provincialData, id){
                 offsetGridLines: false,
                 },
                 ticks: {
+                fontSize: 20,
                 maxTicksLimit: 6,
-                minRotation: 90,
                     // Include a dollar sign in the ticks
                     callback: function(value) {
                     let options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -122,6 +129,13 @@ function createProvincialGraph(provincialData, id){
                     }
                 }
             }],
+            yAxes: [{
+                ticks:{
+                    min: 0,
+                    beginAtZero: true,
+                    fontSize: 20
+                }
+            }]
             }
         }
     });

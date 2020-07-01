@@ -34,17 +34,24 @@
             <button type="submit" id="goButton" class="button button-outline">Go</button>
         </form>
     </div>
-    <div class="map-container">
-        <div class="map-frame">        
-            <div id="mapid"></div>
+    <div class="one-edge-shadow" id="main-body">
+        <div class="map-container">
+            <div class="map-frame">        
+                <div id="mapid"></div>
+            </div>
         </div>
+        
+        <div id="wrapper">
+            <div id="graph">
+                <canvas id="myChart" width="800" height="800"></canvas>
+            </div>
+        </div>
+        
+        
     </div>
-    
-    <div id="graph">
-        <canvas id="myChart" width="400" height="400"></canvas>
-    </div>
+    <h2 id="heading1">National and provincial daily case count:</h2>
     <div id="provGraph">
-        <canvas id="provChart" width="400" height="400"></canvas>
+        <canvas id="provChart" width="1200" height="1200"></canvas>
     </div>
     <script src="./config.js"></script>
     <script src="./provincialData.js"></script>
