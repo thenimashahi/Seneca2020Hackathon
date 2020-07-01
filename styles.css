@@ -1,3 +1,67 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  
+*, *:before, *:after {
+   -webkit-box-sizing: inherit;
+   -moz-box-sizing: inherit;
+   box-sizing: inherit;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.navbar li {
+    margin-bottom: 0;
+    font-size: 28px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#formDiv{
+    padding: 10px;
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+#addressForm{
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+}
+#goButton{
+    font-size: 16px;
+}
+.map-container {
+    height: 100%;
+    /* Fallback for vmin */
+    padding: 0px 1rem 1rem 1rem;
+    padding: 0px 1vmin 1vmin 1vmin;
+}
+  
+.map-frame {
+    height: 100%;
+    width: 100%;
+  /*   We use outline over border as has issues in some cases */
+    outline: 1px solid black;
+}
+.custom .leaflet-popup-content-wrapper{
+    font-size: 18px;
+}
+#map-id { 
+    height: 100%;
+}
+
 #mapid { 
     height: 800px;
     position: relative;

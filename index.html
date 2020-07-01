@@ -15,21 +15,36 @@
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+    <!-- Milligram -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Document</title>
 </head>
 <body>
-    <div id="mapid"></div>
+    <div class='navbar'>
+        <ul>
+            <li>Canada Covid-19 Data</l1>
+        </ul>
+    </div>
+    <div id="formDiv">
+        <form name="addressForm" id="addressForm">
+            <input id="postalCode" for="postalCode" type="text" placeholder="Postal Code" pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$">
+            <button type="submit" id="goButton" class="button button-outline">Go</button>
+        </form>
+    </div>
+    <div class="map-container">
+        <div class="map-frame">        
+            <div id="mapid"></div>
+        </div>
+    </div>
+    
     <div id="graph">
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
     <div id="provGraph">
         <canvas id="provChart" width="400" height="400"></canvas>
-    </div>
-    <div id="formDiv">
-        <form name="addressForm" id="addressForm">
-            <input id="postalCode" for="postalCode" type="text" placeholder="Postal Code" pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$">
-            <button type="submit" id="goButton">Go</button>
-        </form>
     </div>
     <script src="./config.js"></script>
     <script src="./provincialData.js"></script>

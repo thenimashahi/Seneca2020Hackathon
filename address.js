@@ -58,13 +58,9 @@ async function parseAddress(queryString){
                 provinceHealthRegionsForLocation.forEach(region => {
                     if(inside([resultingLocation.geometry.lng, resultingLocation.geometry.lat], region.geometry.coordinates[0][0])){
                             
-                        let displayStr = shouldWearMask(region.properties.data[0].casecount) ? 'Must wear a mask!' : 'Should wear a mask';
+                        let displayStr = shouldWearMask(region.properties.data[0].casecount) ? 'You are in ' + region.properties.ENG_LABEL + '<br>Must wear a mask!' : 'You are in ' + region.properties.ENG_LABEL + 'Should wear a mask';
 
-                        let popupCanvas = createCanvas('popupCanvas');                
-                        
-                        window.currentMarker.bindPopup(popupCanvas, {maxWidth: "auto"}).openPopup();
-                        createChart(region, 'popupCanvas');
-                        console.log('region', region);
+                        window.currentMarker.bindPopup(displayStr).openPopup();
                     } 
                 })
                 mymap.flyTo([resultingLocation.geometry.lat, resultingLocation.geometry.lng], 8);
